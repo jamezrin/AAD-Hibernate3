@@ -1,11 +1,17 @@
 package me.jamezrin.practicas.aahib3.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
-
-import java.util.List;
 
 
 /**
@@ -23,19 +29,18 @@ public class Enfermedad implements Serializable {
 	private int id;
 
 	@Type(type = "yes_no")
-	private String alergia;
+	private boolean alergia;
 
 	@Type(type = "yes_no")
-	private String corazon;
+	private boolean corazon;
 
 	@Type(type = "yes_no")
-	private String estomacal;
+	private boolean estomacal;
 
-	@Type(type = "yes_no")
 	private String nombreAlergia;
 
 	@Type(type = "yes_no")
-	private String rinyones;
+	private boolean rinyones;
 
 	//bi-directional many-to-one association to Seguro
 	@OneToMany(mappedBy="enfermedad")
@@ -52,27 +57,27 @@ public class Enfermedad implements Serializable {
 		this.id = id;
 	}
 
-	public String getAlergia() {
+	public boolean getAlergia() {
 		return this.alergia;
 	}
 
-	public void setAlergia(String alergia) {
+	public void setAlergia(boolean alergia) {
 		this.alergia = alergia;
 	}
 
-	public String getCorazon() {
+	public boolean getCorazon() {
 		return this.corazon;
 	}
 
-	public void setCorazon(String corazon) {
+	public void setCorazon(boolean corazon) {
 		this.corazon = corazon;
 	}
 
-	public String getEstomacal() {
+	public boolean getEstomacal() {
 		return this.estomacal;
 	}
 
-	public void setEstomacal(String estomacal) {
+	public void setEstomacal(boolean estomacal) {
 		this.estomacal = estomacal;
 	}
 
@@ -84,11 +89,11 @@ public class Enfermedad implements Serializable {
 		this.nombreAlergia = nombreAlergia;
 	}
 
-	public String getRinyones() {
+	public boolean getRinyones() {
 		return this.rinyones;
 	}
 
-	public void setRinyones(String rinyones) {
+	public void setRinyones(boolean rinyones) {
 		this.rinyones = rinyones;
 	}
 

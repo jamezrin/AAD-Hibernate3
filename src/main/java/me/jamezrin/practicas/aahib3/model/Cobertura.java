@@ -1,11 +1,17 @@
 package me.jamezrin.practicas.aahib3.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
-
-import java.util.List;
 
 
 /**
@@ -23,13 +29,13 @@ public class Cobertura implements Serializable {
 	private int id;
 
 	@Type(type = "true_false")
-	private String dental;
+	private boolean dental;
 
 	@Type(type = "true_false")
-	private String fecundacionInVitro;
+	private boolean fecundacionInVitro;
 
 	@Type(type = "true_false")
-	private String oftalmologia;
+	private boolean oftalmologia;
 
 	//bi-directional many-to-one association to Seguro
 	@OneToMany(mappedBy="cobertura")
@@ -46,27 +52,27 @@ public class Cobertura implements Serializable {
 		this.id = id;
 	}
 
-	public String getDental() {
+	public boolean getDental() {
 		return this.dental;
 	}
 
-	public void setDental(String dental) {
+	public void setDental(boolean dental) {
 		this.dental = dental;
 	}
 
-	public String getFecundacionInVitro() {
+	public boolean getFecundacionInVitro() {
 		return this.fecundacionInVitro;
 	}
 
-	public void setFecundacionInVitro(String fecundacionInVitro) {
+	public void setFecundacionInVitro(boolean fecundacionInVitro) {
 		this.fecundacionInVitro = fecundacionInVitro;
 	}
 
-	public String getOftalmologia() {
+	public boolean getOftalmologia() {
 		return this.oftalmologia;
 	}
 
-	public void setOftalmologia(String oftalmologia) {
+	public void setOftalmologia(boolean oftalmologia) {
 		this.oftalmologia = oftalmologia;
 	}
 

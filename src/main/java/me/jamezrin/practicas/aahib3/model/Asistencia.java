@@ -1,10 +1,23 @@
 package me.jamezrin.practicas.aahib3.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -139,5 +152,5 @@ public class Asistencia implements Serializable {
 		return "Asistencia [id=" + id + ", descripcion=" + descripcion + ", explicacion=" + explicacion + ", fecha="
 				+ fecha + ", hora=" + hora + ", importe=" + importe + ", lugar=" + lugar + ", tipoAsistencia="
 				+ tipoAsistencia + ", seguro=" + seguro + "]";
-	}
+	}	
 }

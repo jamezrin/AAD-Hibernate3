@@ -1,9 +1,22 @@
 package me.jamezrin.practicas.aahib3.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -193,7 +206,6 @@ public class Seguro implements Serializable {
 	public String toString() {
 		return "Seguro [id=" + id + ", ape1=" + ape1 + ", ape2=" + ape2 + ", casado=" + casado + ", edad=" + edad
 				+ ", embarazada=" + embarazada + ", fechaCreacion=" + fechaCreacion + ", nif=" + nif + ", nombre="
-				+ nombre + ", numHijos=" + numHijos + ", sexo=" + sexo + ", asistencias=" + asistencias + ", cobertura="
-				+ cobertura + ", enfermedad=" + enfermedad + "]";
+				+ nombre + ", numHijos=" + numHijos + ", sexo=" + sexo + "]";
 	}
 }
