@@ -16,6 +16,10 @@ import java.util.List;
 public class Seguro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	enum Sexo {
+		HOMBRE, MUJER, OTRO
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -39,7 +43,8 @@ public class Seguro implements Serializable {
 
 	private int numHijos;
 
-	private int sexo;
+	@Enumerated(EnumType.ORDINAL)
+	private Sexo sexo;
 
 	//bi-directional many-to-one association to Asistencia
 	@OneToMany(mappedBy="seguro")
@@ -138,11 +143,11 @@ public class Seguro implements Serializable {
 		this.numHijos = numHijos;
 	}
 
-	public int getSexo() {
+	public Sexo getSexo() {
 		return this.sexo;
 	}
 
-	public void setSexo(int sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
@@ -184,4 +189,11 @@ public class Seguro implements Serializable {
 		this.enfermedad = enfermedad;
 	}
 
+	@Override
+	public String toString() {
+		return "Seguro [id=" + id + ", ape1=" + ape1 + ", ape2=" + ape2 + ", casado=" + casado + ", edad=" + edad
+				+ ", embarazada=" + embarazada + ", fechaCreacion=" + fechaCreacion + ", nif=" + nif + ", nombre="
+				+ nombre + ", numHijos=" + numHijos + ", sexo=" + sexo + ", asistencias=" + asistencias + ", cobertura="
+				+ cobertura + ", enfermedad=" + enfermedad + "]";
+	}
 }

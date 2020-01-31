@@ -16,6 +16,21 @@ import java.util.Date;
 @NamedQuery(name="Asistencia.findAll", query="SELECT a FROM Asistencia a")
 public class Asistencia implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	enum TipoAsistencia {
+		HOSPITALARIA, AMBULATORIA, CENTRO_SALUD, DOMICILIARIA;
+		
+		@Override
+		public String toString() {
+			switch (this) {
+				case HOSPITALARIA: return "Hospitalaria";
+				case AMBULATORIA: return "Ambulatoria";
+				case CENTRO_SALUD: return "Centro de salud";
+				case DOMICILIARIA: return "Domiciliaria";
+				default: return "Desconocido";
+			}
+		}
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,18 +39,20 @@ public class Asistencia implements Serializable {
 	private String descripcion;
 
 	@Lob
-	private byte[] explicacion;
+	private String explicacion;
 
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	private Time hora;
+	@Temporal(TemporalType.TIME)
+	private Date hora;
 
 	private BigDecimal importe;
 
 	private String lugar;
 
-	private String tipoAsistencia;
+	@Enumerated(EnumType.STRING)
+	private TipoAsistencia tipoAsistencia;
 
 	//bi-directional many-to-one association to Seguro
 	@ManyToOne
@@ -61,11 +78,11 @@ public class Asistencia implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public byte[] getExplicacion() {
+	public String getExplicacion() {
 		return this.explicacion;
 	}
 
-	public void setExplicacion(byte[] explicacion) {
+	public void setExplicacion(String explicacion) {
 		this.explicacion = explicacion;
 	}
 
@@ -77,7 +94,7 @@ public class Asistencia implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public Time getHora() {
+	public Date getHora() {
 		return this.hora;
 	}
 
@@ -101,11 +118,11 @@ public class Asistencia implements Serializable {
 		this.lugar = lugar;
 	}
 
-	public String getTipoAsistencia() {
+	public TipoAsistencia getTipoAsistencia() {
 		return this.tipoAsistencia;
 	}
 
-	public void setTipoAsistencia(String tipoAsistencia) {
+	public void setTipoAsistencia(TipoAsistencia tipoAsistencia) {
 		this.tipoAsistencia = tipoAsistencia;
 	}
 
@@ -117,4 +134,10 @@ public class Asistencia implements Serializable {
 		this.seguro = seguro;
 	}
 
+	@Override
+	public String toString() {
+		return "Asistencia [id=" + id + ", descripcion=" + descripcion + ", explicacion=" + explicacion + ", fecha="
+				+ fecha + ", hora=" + hora + ", importe=" + importe + ", lugar=" + lugar + ", tipoAsistencia="
+				+ tipoAsistencia + ", seguro=" + seguro + "]";
+	}
 }

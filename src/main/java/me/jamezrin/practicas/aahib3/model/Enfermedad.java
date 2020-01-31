@@ -2,6 +2,9 @@ package me.jamezrin.practicas.aahib3.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Type;
+
 import java.util.List;
 
 
@@ -19,14 +22,19 @@ public class Enfermedad implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
+	@Type(type = "yes_no")
 	private String alergia;
 
+	@Type(type = "yes_no")
 	private String corazon;
 
+	@Type(type = "yes_no")
 	private String estomacal;
 
+	@Type(type = "yes_no")
 	private String nombreAlergia;
 
+	@Type(type = "yes_no")
 	private String rinyones;
 
 	//bi-directional many-to-one association to Seguro
@@ -106,4 +114,9 @@ public class Enfermedad implements Serializable {
 		return seguro;
 	}
 
+	@Override
+	public String toString() {
+		return "Enfermedad [id=" + id + ", alergia=" + alergia + ", corazon=" + corazon + ", estomacal=" + estomacal
+				+ ", nombreAlergia=" + nombreAlergia + ", rinyones=" + rinyones + ", seguros=" + seguros + "]";
+	}
 }
